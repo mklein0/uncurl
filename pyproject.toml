@@ -20,8 +20,7 @@ dependencies = [
     "pyperclip",
     "six",
 ]
-version = "0.0.11+sm1"
-#dynamic = ["version"]
+dynamic = ["version"]
 
 [project.optional-dependencies]
 test = ["coverage==5.5", "mock", "nose", "six", "sure<1.2.4"]
@@ -34,6 +33,10 @@ Homepage = "https://github.com/spulec/uncurl"
 
 [tool.setuptools]
 packages = ["uncurl"]
+
+[tool.setuptools_scm]
+version_file = "uncurl/_version.py"
+tag_regex = "^(?:[\\w-]+-)?(?P<version>[vV]?\\d+(?:\\.\\d+){0,2}[^\\+]*(?:\\+.*)?)$"
 
 # ... other project metadata fields as listed in:
 #     https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
