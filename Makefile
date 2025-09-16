@@ -1,12 +1,16 @@
 SHELL := /bin/bash
 
+.PHONY: build
+
 init:
-	@python setup.py develop
-	@pip install -r requirements.txt
+	@pip install -e '.[test]'
 
 test:
 	rm -f .coverage
 	@nosetests -sv --with-coverage ./tests/
+
+build:
+	python -m build .
 
 publish:
 	python setup.py sdist bdist_wheel upload

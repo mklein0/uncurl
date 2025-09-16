@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uncurl"
+authors = [
+    {name = "Steve Pulec", email = "spulec@gmail.com"},
+]
+description = "A library to convert curl requests to python-requests."
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["curl", "requests"]
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "pyperclip",
+    "six",
+]
+version = "0.0.11+sm1"
+#dynamic = ["version"]
+
+[project.optional-dependencies]
+test = ["coverage==5.5", "mock", "nose", "six", "sure<1.2.4"]
+
+[project.scripts]
+uncurl = "uncurl.bin:main"
+
+[project.urls]
+Homepage = "https://github.com/spulec/uncurl"
+
+[tool.setuptools]
+packages = ["uncurl"]
+
+# ... other project metadata fields as listed in:
+#     https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
