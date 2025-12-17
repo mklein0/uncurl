@@ -56,6 +56,21 @@ def test_cookies():
 )"""
     )
 
+def test_cookies_new_flag():
+    uncurl.parse("curl 'https://pypi.python.org/pypi/uncurl' -H 'Accept-Encoding: gzip,deflate,sdch' -b 'foo=bar; baz=baz2'").should.equal(
+        """requests.get("https://pypi.python.org/pypi/uncurl",
+    headers={
+        "Accept-Encoding": "gzip,deflate,sdch"
+    },
+    cookies={
+        "baz": "baz2",
+        "foo": "bar"
+    },
+    auth=(),
+    proxies={},
+)"""
+    )
+
 
 def test_cookies_lowercase():
     uncurl.parse("curl 'https://pypi.python.org/pypi/uncurl' -H 'Accept-Encoding: gzip,deflate,sdch' -H 'cookie: foo=bar; baz=baz2'").should.equal(
